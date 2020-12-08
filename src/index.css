@@ -1,4 +1,11 @@
 @import-normalize;
+@import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
+
+html {
+  box-sizing: border-box;
+  width: 100vw;
+  overflow-x: hidden;
+}
 
 *,
 *::before,
@@ -15,7 +22,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  padding-top: 50px;
+
+  padding-bottom: 50px;
   background-image: url('./img/bg.png');
 }
 
