@@ -14,6 +14,7 @@ class ImageGallery extends Component {
     error: null,
     showModal: false,
     largeImageURL: null,
+    status: 'idle',
   };
 
   componentDidUpdate(prevProps, prevState) {
@@ -63,7 +64,14 @@ class ImageGallery extends Component {
   };
 
   render() {
-    const { showModal, images, error, isLoading, largeImageURL } = this.state;
+    const {
+      showModal,
+      images,
+      error,
+      isLoading,
+      largeImageURL,
+      status,
+    } = this.state;
     const showButton = images.length > 0;
 
     return (
