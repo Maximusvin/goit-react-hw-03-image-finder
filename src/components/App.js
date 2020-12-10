@@ -3,9 +3,7 @@ import fetchImg from '../services/fetchAPI';
 
 import Searchbar from './Searchbar/Searchbar';
 import ImageGallery from './ImageGallery/ImageGallery';
-// import Loader from './Loader/Loader';
 import Button from './Button/Button';
-// import Modal from './Modal/Modal';
 
 import './App.css';
 
@@ -16,6 +14,7 @@ export default class App extends Component {
     currentPage: 1,
     isLoading: false,
     error: null,
+    showModal: false,
   };
 
   componentDidUpdate(prevProps, prevState) {
@@ -35,6 +34,10 @@ export default class App extends Component {
 
   newPerPage = perPage => {
     this.setState({ perPage });
+  };
+
+  toggleModal = () => {
+    this.setState(({ showModal }) => ({ showModal: !showModal }));
   };
 
   fetchImages = () => {
@@ -59,14 +62,19 @@ export default class App extends Component {
   };
 
   render() {
-    const { images, isLoading, error } = this.state;
+    const { images, isLoading, error, showModal } = this.state;
+    const showButton = images.length > 0;
+
     return (
       <>
         {error && <h2>{error}</h2>}
         <Searchbar onSubmit={this.newQuery} />
-
-        <ImageGallery images={images} />
-        {images.length > 0 && (
+        <ImageGallery
+          images={images}
+          showModal={showModal}
+          onToggleModal={this.toggleModal}
+        />
+        {showButton && (
           <Button onClick={this.fetchImages} isLoading={isLoading} />
         )}
       </>

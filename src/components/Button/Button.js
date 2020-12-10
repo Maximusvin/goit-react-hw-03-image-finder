@@ -12,7 +12,7 @@ const Button = ({ onClick, isLoading }) => {
         width={20}
         visible={isLoading}
       />
-      {isLoading ? 'Load...' : 'Load more'}
+      {isLoading ? '' : 'Load more'}
     </button>
   );
 };
