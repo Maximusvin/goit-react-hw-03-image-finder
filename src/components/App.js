@@ -9,14 +9,14 @@ export default class App extends Component {
     query: '',
   };
 
-  newQuery = query => {
+  handleSubmitSearchbar = query => {
     this.setState({ query });
   };
 
   render() {
     return (
       <>
-        <Searchbar onSubmit={this.newQuery} />
+        <Searchbar onSubmit={this.handleSubmitSearchbar} />
         <ImageGallery query={this.state.query} />
       </>
     );
